@@ -6,6 +6,11 @@ class Routine {
     constructor(name, description) {
         this.name = name
         this.description = description
+        this.workouts = []
+    }
+
+    addWorkout(workout) {
+        this.workouts.push(workout)
     }
 }
 
