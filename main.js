@@ -1,5 +1,7 @@
 import Routine from "./scripts/Routine.js"
 import Workout from "./scripts/Workout.js"
+import { select } from "./util/util.js"
+import { el } from "./util/util.js"
 import { workouts } from "./data/workouts.js"
 
 
@@ -38,9 +40,21 @@ const addWorkouts = (routine) => {
         const newWorkout = new Workout(chosenWorkout.name, chosenWorkout.stats)
         routine.addWorkout(newWorkout)
 
+        console.clear()
         console.log(routine)
-        addingWorkouts = false
+        addingWorkouts = confirm('Do You want to add more workouts to this routine?') 
     }
 }
 
-init()
+const displayRoutines = () => {
+    const body = select('body')
+
+    const container = el('div')
+
+    const header = el('h3', {text: 'Routines'})
+    const ulist = el('ul')
+
+    userData.routines.forEach(routine => ulist.appendChild(createRoutineBtn(routine)))
+}
+
+// init()
