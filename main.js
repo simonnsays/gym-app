@@ -1,14 +1,16 @@
 import Routine from "./scripts/Routine.js"
 import Workout from "./scripts/Workout.js"
-import { select } from "./util/util.js"
-import { el } from "./util/util.js"
+import routinePage from "./pages/routinesPage.js"
+
 import { workouts } from "./data/workouts.js"
 
 
 const userData = {
     name: 'John Darel',
     age: '24',
-    routines: []
+    routines: [
+         new Routine('Upper Day', 'Push and Pull workouts')
+   ]
 }
 
 const init = () => {
@@ -29,6 +31,8 @@ const init = () => {
     } else {
         console.log('no')
         //display routines
+        routinePage.displayRoutines(userData)
+
     }
 }
 
@@ -46,15 +50,4 @@ const addWorkouts = (routine) => {
     }
 }
 
-const displayRoutines = () => {
-    const body = select('body')
-
-    const container = el('div')
-
-    const header = el('h3', {text: 'Routines'})
-    const ulist = el('ul')
-
-    userData.routines.forEach(routine => ulist.appendChild(createRoutineBtn(routine)))
-}
-
-// init()
+init()
